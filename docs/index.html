@@ -325,7 +325,10 @@
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">var</span> config = <span class="hljs-built_in">require</span>(<span class="hljs-string">'yargs-command-config'</span>);</pre>
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">var</span> config = <span class="hljs-built_in">require</span>(<span class="hljs-string">'yargs-command-config'</span>)({<span class="hljs-attr">file</span>: <span class="hljs-string">'./path/to/config.json'</span>});
+<span class="hljs-keyword">var</span> yargs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'yargs'</span>);
+
+<span class="hljs-keyword">var</span> argv = yargs.command(config).argv;</pre>
     
   
 

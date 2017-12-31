@@ -35,7 +35,11 @@ var fs = require('fs');
  * * `out.handler`: the function that manages the config file and returns an `argv` Object containing command line arguments
  *
  * @example
- * var config = require('yargs-command-config');
+ * var config = require('yargs-command-config')({file: './path/to/config.json'});
+ * var yargs = require('yargs');
+ *
+ * var argv = yargs.command(config).argv;
+ *
  */
 module.exports = function(options) {
 	options = options || {};
