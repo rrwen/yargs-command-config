@@ -33,6 +33,45 @@ An example usage of yargs-command-config:
 var yargscommandconfig = require('yargs-command-config');
 ```
 
+```
+bin config <task> [option] [value] [--file]
+
+manage default config
+
+<task> is one of:
+
+* set
+* delete
+* view
+* clear
+* reset
+
+Set option to value
+> set [option] [value]
+
+Remove default option
+> delete [option]
+
+View default options
+> view
+
+Clear default options
+> clear
+
+Reset default options
+> reset
+
+Manage other config file
+> set [option] [value] --file other.json
+> delete [option] --file other.json
+> view --file other.json
+> clear --file other.json
+> reset --file other.json
+
+Options:
+	--help	Show help	[boolean]
+```
+
 See [Documentation](https://rrwen.github.io/yargs-command-config) for more details.
 
 ## Contributions
