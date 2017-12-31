@@ -30,7 +30,7 @@ var fs = require('fs');
  * @param {Object} [options.task.set='set'] name of `<task`> command for `set`.
  * @returns {Object} Yargs {@link https://github.com/yargs/yargs/blob/master/docs/advanced.md#providing-a-command-module Command Module} with the following properties (`out` is the returned Object):
  *
- * * `out.command`: the command string in the form of `options.command <options.task.command> [options.task.option] [options.task.value] [options.task.file]`
+ * * `out.command`: the command string in the form of `options.command <options.task.command> [options.task.option] [options.task.value] [--options.task.file]`
  * * `out.describe`: the description string for `out.command`
  * * `out.handler`: the function that manages the config file and returns an `argv` Object containing command line arguments
  *
@@ -56,7 +56,7 @@ module.exports = function(options) {
 	options.command = options.command || 'config';
 	options.defaults = options.defaults || argv.config;
 	options.describe = options.describe || 
-		'manage default options' +
+		'manage default config' +
 		'\n\n<' + options.task.command + '> is one of:' +
 		'\n\n* ' + options.task.set +
 		'\n* ' + options.task.delete +
@@ -64,23 +64,30 @@ module.exports = function(options) {
 		'\n* ' + options.task.clear +
 		'\n* ' + options.task.reset +
 		'\n\nSet option to value' +
-		'\n> ' +  options.task.set + ' [' + options.task.option + '] [' + options.task.value + ']' + ' [' + options.task.file + ']' +
+		'\n> ' +  options.task.set + ' [' + options.task.option + '] [' + options.task.value + ']' +
 		'\n\nRemove default option' +
-		'\n> ' + options.task.delete + ' [' + options.task.option + ']' + ' [' + options.task.file + ']' +
+		'\n> ' + options.task.delete + ' [' + options.task.option + ']' +
 		'\n\nView default options' +
-		'\n> ' + options.task.view + ' [' + options.task.file + ']' +
+		'\n> ' + options.task.view +
 		'\n\nClear default options' +
-		'\n> ' + options.task.clear + ' [' + options.task.file + ']' +
+		'\n> ' + options.task.clear +
 		'\n\nReset default options' +
-		'\n> ' + options.task.reset + ' [' + options.task.file + ']';
-	
+		'\n> ' + options.task.reset +
+		'\n\nManage other config file' +
+		'\n> ' +  options.task.set + ' [' + options.task.option + '] [' + options.task.value + ']' + ' --' + options.task.file + ' other.json' +
+		'\n> ' + options.task.delete + ' [' + options.task.option + ']' +  ' --' + options.task.file + ' other.json' +
+		'\n> ' + options.task.view + ' --' + options.task.file + ' other.json' +
+		'\n> ' + options.task.clear + ' --' + options.task.file + ' other.json' +
+		'\n> ' + options.task.reset + ' --' + options.task.file + ' other.json';
+		
 	// (command_module) Create yargs command module
 	var out = {};
-	out.command = options.command + ' <' + options.task.command + '> [' + options.task.option + '] [' + options.task.value + '] [' + options.task.file + ']';
+	out.command = options.command + ' <' + options.task.command + '> [' + options.task.option + '] [' + options.task.value + '] [--' + options.task.file +  ']';
 	out.describe = options.describe;
 	out.handler = function(argv) {
 		var task = argv.task;
 		var file = argv[options.task.file] || options.file;
+		console.log(argv);
 		
 		// (json_read) Read json file or create if not exists
 		if (!fs.existsSync(file)) {
