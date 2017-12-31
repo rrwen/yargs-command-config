@@ -11,7 +11,7 @@ var fs = require('fs');
  *
  * @module config
  * @param {Object} [options={}] options for this function.
- * @param {string} options.file path to JSON config file for yargs.
+ * @param {string} options.file default path to JSON config file for yargs.
  *
  * * The command line argument `[file]` will take priority over `options.file` 
  *
