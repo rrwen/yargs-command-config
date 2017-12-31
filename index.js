@@ -39,11 +39,8 @@ var fs = require('fs');
  * var config = require('yargs-command-config')({file: './path/to/config.json'});
  * var yargs = require('yargs');
  *
- * // node bin.js config -h
- * var argv = yargs
- * 	.command(config)
- * 	.help('h')
- * 	.argv;
+ * // node bin.js config help
+ * var argv = yargs.command(config).argv;
  *
  */
 module.exports = function(options) {
