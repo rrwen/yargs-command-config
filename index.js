@@ -30,7 +30,7 @@ var fs = require('fs');
  * @param {Object} [options.task.set='set'] name of `<task`> command for `set`.
  * @returns {Object} Yargs {@link https://github.com/yargs/yargs/blob/master/docs/advanced.md#providing-a-command-module Command Module} with the following properties (`out` is the returned Object):
  *
- * * `out.command`: the command string in the form of `options.command <options.task.command> [options.task.option] [options.task.value] [options.task.file]
+ * * `out.command`: the command string in the form of `options.command <options.task.command> [options.task.option] [options.task.value] [options.task.file]`
  * * `out.describe`: the description string for `out.command`
  * * `out.handler`: the function that manages the config file and returns an `argv` Object containing command line arguments
  *
