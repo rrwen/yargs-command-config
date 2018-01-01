@@ -27,10 +27,16 @@ For the latest developer version, see [Developer Install](#developer-install).
 
 ## Usage
 
-An example usage of yargs-command-config:
+Create a file named `bin` with the following contents:
 
 ```javascript
 var yargscommandconfig = require('yargs-command-config');
+```
+
+Run `bin` with `node`:
+
+```
+node bin config help
 ```
 
 ```
