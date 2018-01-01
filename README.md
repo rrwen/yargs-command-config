@@ -16,11 +16,11 @@ Yargs command for managing config files
 
 ## Install
 
-1. Install [Node.js](https://nodejs.org/en/)
-2. Install [yargs-command-config](https://www.npmjs.com/package/yargs-command-config) via `npm`
+1. Install [Node.js](https://nodejs.org/en/) 
+2. Install [yargs](https://www.npmjs.com/package/yargs) and [yargs-command-config](https://www.npmjs.com/package/yargs-command-config) via `npm `
 
 ```
-npm install --save yargs-command-config
+npm install --save yargs yargs-command-config
 ```
 
 For the latest developer version, see [Developer Install](#developer-install).
@@ -32,10 +32,11 @@ Create a file named `bin.js` with the following contents:
 ```javascript
 var yargs = require('yargs');
 
-// (config) Load config command with path to config JSON file
+// (config) Load command with path to config JSON file
+// Replace './path/to/config.json' with your config JSON file
 var config = require('yargs-command-config')({file: './path/to/config.json'});
 
-// (yargs) Add command to manage config JSON file
+// (yargs) Add command to manage config file
 var argv = yargs.command(config).argv;
 ```
 
@@ -44,6 +45,8 @@ Run `bin.js` with [node](https://nodejs.org/api/cli.html):
 ```
 node bin.js config help
 ```
+
+The following help options will be displayed after running `bin.js`:
 
 ```
 bin config <task> [option] [value] [--file]
@@ -82,6 +85,26 @@ Manage other config file
 
 Options:
 	--help	Show help	[boolean]
+```
+
+Defautl config files are managed with the command below:
+
+```
+node bin.js config view
+node bin.js config clear
+node bin.js config reset
+node bin.js config set option value
+node bin.js config delete option
+```
+
+Other config files are managed by passing a path in the option `--file`:
+
+```
+node bin.js config view --file config.json
+node bin.js config clear --file config.json
+node bin.js config reset --file config.json
+node bin.js config set option value --file config.json
+node bin.js config delete option --file config.json
 ```
 
 See [Documentation](https://rrwen.github.io/yargs-command-config) for more details.

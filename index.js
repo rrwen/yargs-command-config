@@ -35,14 +35,42 @@ var fs = require('fs');
  * * `out.handler`: the function that manages the config file and returns an `argv` Object containing command line arguments
  *
  * @example
- * // bin.js
+ * // *** DEFAULT ***
+ *
  * var yargs = require('yargs');
  *
- * // (config) Load config command with path to config JSON file
+ * // (config) Load command with path to config JSON file
  * var config = require('yargs-command-config')({file: './path/to/config.json'});
  *
- * // (yargs) Add command to manage config JSON file
- * // CLI: node bin.js config help
+ * // (yargs) Add command to manage config file
+ * var argv = yargs.command(config).argv;
+ *
+ * // *** CUSTOM ***
+ *
+ * var yargs = require('yargs');
+ *
+ * // (options_command) Setup command options
+ * options = {};
+ * options.command = 'config2';
+ * options.defaults = {option: 'value'};
+ * options.describe = 'Description';
+ *
+ * // (options_task) Setup task options
+ * options.task. = {};
+ * options.task.command = 'task2';
+ * options.task.option = 'options2';
+ * options.task.value = 'value2';
+ * options.task.file = 'file2';
+ * options.task.reset = 'reset2';
+ * options.task.clear = 'clear2';
+ * options.task.view = 'view2';
+ * options.task.delete = 'delete2';
+ * options.task.set = 'set2';
+ *
+ * // (config) Load command with options
+ * var config = require('yargs-command-config')(options);
+ *
+ * // (yargs) Add command to manage config file
  * var argv = yargs.command(config).argv;
  *
  */

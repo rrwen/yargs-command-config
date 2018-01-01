@@ -325,14 +325,42 @@
     <div class='py1 quiet mt1 prose-big'>Example</div>
     
       
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// bin.js</span>
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// *** DEFAULT ***</span>
+
 <span class="hljs-keyword">var</span> yargs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'yargs'</span>);
 
-<span class="hljs-comment">// (config) Load config command with path to config JSON file</span>
+<span class="hljs-comment">// (config) Load command with path to config JSON file</span>
 <span class="hljs-keyword">var</span> config = <span class="hljs-built_in">require</span>(<span class="hljs-string">'yargs-command-config'</span>)({<span class="hljs-attr">file</span>: <span class="hljs-string">'./path/to/config.json'</span>});
 
-<span class="hljs-comment">// (yargs) Add command to manage config JSON file</span>
-<span class="hljs-comment">// CLI: node bin.js config help</span>
+<span class="hljs-comment">// (yargs) Add command to manage config file</span>
+<span class="hljs-keyword">var</span> argv = yargs.command(config).argv;
+
+<span class="hljs-comment">// *** CUSTOM ***</span>
+
+<span class="hljs-keyword">var</span> yargs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'yargs'</span>);
+
+<span class="hljs-comment">// (options_command) Setup command options</span>
+options = {};
+options.command = <span class="hljs-string">'config2'</span>;
+options.defaults = {<span class="hljs-attr">option</span>: <span class="hljs-string">'value'</span>};
+options.describe = <span class="hljs-string">'Description'</span>;
+
+<span class="hljs-comment">// (options_task) Setup task options</span>
+options.task. = {};
+options.task.command = <span class="hljs-string">'task2'</span>;
+options.task.option = <span class="hljs-string">'options2'</span>;
+options.task.value = <span class="hljs-string">'value2'</span>;
+options.task.file = <span class="hljs-string">'file2'</span>;
+options.task.reset = <span class="hljs-string">'reset2'</span>;
+options.task.clear = <span class="hljs-string">'clear2'</span>;
+options.task.view = <span class="hljs-string">'view2'</span>;
+options.task.delete = <span class="hljs-string">'delete2'</span>;
+options.task.set = <span class="hljs-string">'set2'</span>;
+
+<span class="hljs-comment">// (config) Load command with options</span>
+<span class="hljs-keyword">var</span> config = <span class="hljs-built_in">require</span>(<span class="hljs-string">'yargs-command-config'</span>)(options);
+
+<span class="hljs-comment">// (yargs) Add command to manage config file</span>
 <span class="hljs-keyword">var</span> argv = yargs.command(config).argv;</pre>
     
   
