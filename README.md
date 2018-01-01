@@ -40,13 +40,13 @@ var config = require('yargs-command-config')({file: './path/to/config.json'});
 var argv = yargs.command(config).argv;
 ```
 
-Run `bin.js` with [node](https://nodejs.org/api/cli.html):
+Display help options for `bin.js` using [node](https://nodejs.org/api/cli.html):
 
 ```
 node bin.js config help
 ```
 
-The following help options will be displayed after running `bin.js`:
+The following will be displayed:
 
 ```
 bin config <task> [option] [value] [--file]
@@ -87,7 +87,7 @@ Options:
 	--help	Show help	[boolean]
 ```
 
-Defautl config files are managed with the command below:
+Default config files are managed with the commands below:
 
 ```
 node bin.js config view
