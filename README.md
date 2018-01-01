@@ -30,9 +30,12 @@ For the latest developer version, see [Developer Install](#developer-install).
 Create a file named `bin.js` with the following contents:
 
 ```javascript
-var config = require('yargs-command-config')({file: './path/to/config.json'});
 var yargs = require('yargs');
 
+// (config) Load config command with path to config JSON file
+var config = require('yargs-command-config')({file: './path/to/config.json'});
+
+// (yargs) Add command to manage config JSON file
 var argv = yargs.command(config).argv;
 ```
 

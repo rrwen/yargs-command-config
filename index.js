@@ -36,10 +36,13 @@ var fs = require('fs');
  *
  * @example
  * // bin.js
- * var config = require('yargs-command-config')({file: './path/to/config.json'});
  * var yargs = require('yargs');
  *
- * // node bin.js config help
+ * // (config) Load config command with path to config JSON file
+ * var config = require('yargs-command-config')({file: './path/to/config.json'});
+ *
+ * // (yargs) Add command to manage config JSON file
+ * // CLI: node bin.js config help
  * var argv = yargs.command(config).argv;
  *
  */
