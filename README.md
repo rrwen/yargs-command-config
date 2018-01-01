@@ -27,16 +27,19 @@ For the latest developer version, see [Developer Install](#developer-install).
 
 ## Usage
 
-Create a file named `bin` with the following contents:
+Create a file named `bin.js` with the following contents:
 
 ```javascript
-var yargscommandconfig = require('yargs-command-config');
+var config = require('yargs-command-config')({file: './path/to/config.json'});
+var yargs = require('yargs');
+
+var argv = yargs.command(config).argv;
 ```
 
-Run `bin` with `node`:
+Run `bin.js` with [node](https://nodejs.org/api/cli.html):
 
 ```
-node bin config help
+node bin.js config help
 ```
 
 ```
