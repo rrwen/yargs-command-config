@@ -177,12 +177,12 @@
 
   
     <tr>
-  <td class='break-word'><span class='code bold'>options.task.option</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>
+  <td class='break-word'><span class='code bold'>options.task.key</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>
   
-    (default <code>&#39;option&#39;</code>)
+    (default <code>&#39;key&#39;</code>)
   </td>
   <td class='break-word'><span>name of optional 
-<code>[option]</code>
+<code>[key]</code>
  argument.
 </span></td>
 </tr>
@@ -313,7 +313,7 @@
 <code>out</code>
  is the returned Object):
 <ul>
-<li><code>out.command</code>: the command string in the form of <code>options.command &#x3C;options.task.command> [options.task.option] [options.task.value] [--options.task.file]</code></li>
+<li><code>out.command</code>: the command string in the form of <code>options.command &#x3C;options.task.command> [options.task.key] [options.task.value] [--options.task.file]</code></li>
 <li><code>out.describe</code>: the description string for <code>out.command</code></li>
 <li><code>out.handler</code>: the function that manages the config file and returns an <code>argv</code> Object containing command line arguments</li>
 </ul>
@@ -345,13 +345,13 @@
 <span class="hljs-comment">// (options_command) Setup command options</span>
 options = {};
 options.command = <span class="hljs-string">'config2'</span>;
-options.defaults = {<span class="hljs-attr">option</span>: <span class="hljs-string">'value'</span>};
+options.defaults = {<span class="hljs-attr">field</span>: <span class="hljs-string">'value'</span>};
 options.describe = <span class="hljs-string">'Description'</span>;
 
 <span class="hljs-comment">// (options_task) Setup task options</span>
 options.task. = {};
 options.task.command = <span class="hljs-string">'task2'</span>;
-options.task.option = <span class="hljs-string">'options2'</span>;
+options.task.key = <span class="hljs-string">'key2'</span>;
 options.task.value = <span class="hljs-string">'value2'</span>;
 options.task.file = <span class="hljs-string">'file2'</span>;
 options.task.reset = <span class="hljs-string">'reset2'</span>;

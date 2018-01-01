@@ -49,7 +49,7 @@ node bin.js config help
 The following will be displayed:
 
 ```
-bin config <task> [option] [value] [--file]
+bin config <task> [key] [value] [--file]
 
 manage default config
 
@@ -62,10 +62,10 @@ manage default config
 * reset
 
 Set option to value
-> set [option] [value]
+> set [key] [value]
 
 Remove default option
-> delete [option]
+> delete [key]
 
 View default options
 > view
@@ -77,8 +77,8 @@ Reset default options
 > reset
 
 Manage other config file
-> set [option] [value] --file other.json
-> delete [option] --file other.json
+> set [key] [value] --file other.json
+> delete [key] --file other.json
 > view --file other.json
 > clear --file other.json
 > reset --file other.json
@@ -93,8 +93,8 @@ Default config files are managed with the commands below:
 node bin.js config view
 node bin.js config clear
 node bin.js config reset
-node bin.js config set option value
-node bin.js config delete option
+node bin.js config set key value
+node bin.js config delete key
 ```
 
 Other config files are managed by passing a path in the option `--file`:
@@ -103,8 +103,8 @@ Other config files are managed by passing a path in the option `--file`:
 node bin.js config view --file config.json
 node bin.js config clear --file config.json
 node bin.js config reset --file config.json
-node bin.js config set option value --file config.json
-node bin.js config delete option --file config.json
+node bin.js config set key value --file config.json
+node bin.js config delete key --file config.json
 ```
 
 See [Documentation](https://rrwen.github.io/yargs-command-config) for more details.
