@@ -2,10 +2,11 @@
 // rrwen.dev@gmail.com
 
 // (packages) Package dependencies
+var config = require('../index.js');
 var fs = require('fs');
 var moment = require('moment');
-var yargscommandconfig = require('../index.js');
 var test = require('tape');
+var yargs = require('yargs');
 
 // (test_info) Get package metadata
 var json = JSON.parse(fs.readFileSync('package.json', 'utf8'));
@@ -33,22 +34,24 @@ test('Tests for ' + json.name + ' (' + json.version + ')', t => {
 	t.comment('Date: ' + moment().format('YYYY-MM-DD hh:mm:ss'));
 	t.comment('Dependencies: ' + testedPackages.join(', '));
 	t.comment('Developer: ' + devPackages.join(', '));
-
-	// (test_pass) Pass a test
-	t.pass('(MAIN) test pass');
-
-	// (test_equal) Equal test
-	var actual = 1;
-	var expected = 1;
-	t.equal(actual, expected, '(A) Equal test');
-
-	// (test_deepequal) Deep equal test
-	var actual = {a: 1, b: {c: 2}, d: [3]};
-	var expected = {a: 1, b: {c: 2}, d: [3]};
-	t.deepEquals(actual, expected, '(B) Deep equal test');
-
-	// (test_fail) Fail a test
-	// t.fail('(MAIN) test fail');
-
+	
+	// (test_variables) Test variables used for all tests
+	var actual, expected;
+	
+	// (test_default) Tests on default options
+	t.comment('(A) tests on default options');
+	
+	// (test_default_reset) Test default reset
+	var defaultHandler = config().handler;
+	actual = defaultHandler({_: ['config'], task: 'reset', file: './tests/out/config.json'});
+	expected = {_: ['config'], task: 'reset', file: './tests/out/config.json'};
+	t.deepEquals(actual, expected, '(A) config reset');
+	
+	// (test_default_reset) Test default clear
+	var defaultHandler = config().handler;
+	actual = defaultHandler({_: ['config'], task: 'clear', file: './tests/out/config.json', config: {option: 'value'}});
+	expected = {_: ['config'], task: 'clear', file: './tests/out/config.json', config: {option: 'value'}};
+	t.deepEquals(actual, expected, '(A) config clear');
+	
 	t.end();
 });

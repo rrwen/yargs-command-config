@@ -16,7 +16,10 @@ var fs = require('fs');
  * * The command line argument `[file]` will take priority over `options.file` 
  *
  * @param {string} [options.command='config'] name of base `<config>` command.
- * @param {Object} [options.defaults='defaults'] default config object to be used.
+ * @param {Object} [options.defaults={}] default config object to be used.
+ *
+ *  * If `options.defaults` is undefined, the object `argv.config` will be used before defaulting to `{}` 
+ *
  * @param {string} [options.describe='describe'] description for base `<config>` command.
  * @param {Object} [options.task={}] options for <task> commands.
  * @param {Object} [options.task.command='task'] name of `<task>` command.
@@ -91,7 +94,6 @@ module.exports = function(options) {
 	
 	// (default) Default options
 	options.command = options.command || 'config';
-	options.defaults = options.defaults || argv.config;
 	options.describe = options.describe || 
 		'manage default config' +
 		'\n\n<' + options.task.command + '> is one of:' +
@@ -124,18 +126,18 @@ module.exports = function(options) {
 	out.handler = function(argv) {
 		var task = argv.task;
 		var file = argv[options.task.file] || options.file;
-		console.log(argv);
+		var defaults =  options.defaults || argv.config || {};
 		
 		// (json_read) Read json file or create if not exists
 		if (!fs.existsSync(file)) {
-			fs.writeFileSync(file, JSON.stringify(options.defaults));
+			fs.writeFileSync(file, JSON.stringify(defaults));
 		}
 		var json = require(file);
 		
 		// (json_reset) Reset json file to defaults
 		if (task == options.task.reset) {
-			fs.writeFileSync(file, JSON.stringify(options.defaults));
-			json = options.defaults;
+			fs.writeFileSync(file, JSON.stringify(defaults));
+			json = defaults;
 			console.log('Reset defaults');
 		}
 		

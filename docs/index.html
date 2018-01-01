@@ -127,9 +127,12 @@
                 <tr>
   <td class='break-word'><span class='code bold'>options.defaults</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>
   
-    (default <code>&#39;defaults&#39;</code>)
+    (default <code>{}</code>)
   </td>
   <td class='break-word'><span>default config object to be used.
+<ul>
+<li>If <code>options.defaults</code> is undefined, the object <code>argv.config</code> will be used before defaulting to <code>{}</code></li>
+</ul>
 </span></td>
 </tr>
 
