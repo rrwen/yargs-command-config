@@ -235,17 +235,11 @@ The module [yargs-command-config](https://www.npmjs.com/package/yargs-command-co
 
 npm | Package
 --- | ---
-component | description
-component | description
-component | description
-component | description
+[yargs](https://www.npmjs.com/package/yargs) | Base command line argument parser
+[fs](https://nodejs.org/api/fs.html) | Read and write [JSON](https://www.json.org/) config files
 
 ```
-component   <-- detail
+ yargs   <-- Parse command line arguments
     |
-component   <-- detail
-    |
-component   <-- detail
-    |
-component   <-- detail
+   fs   <-- JSON config files
 ```
