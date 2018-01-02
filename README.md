@@ -239,7 +239,7 @@ npm | Package
 [fs](https://nodejs.org/api/fs.html) | Read and write [JSON](https://www.json.org/) config files
 
 ```
- yargs   <-- Parse command line arguments
-    |
-   fs   <-- JSON config files
+ yargs  <-- Parse command line arguments
+   |
+  fs    <-- JSON config files
 ```
