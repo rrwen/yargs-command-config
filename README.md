@@ -233,13 +233,13 @@ npm publish
 
 The module [yargs-command-config](https://www.npmjs.com/package/yargs-command-config) uses the following npm packages for its implementation:
 
-npm | Package
+npm | Purpose
 --- | ---
-[yargs](https://www.npmjs.com/package/yargs) | Base command line argument parser
+[yargs](https://www.npmjs.com/package/yargs) | Manage command line arguments and options
 [fs](https://nodejs.org/api/fs.html) | Read and write [JSON](https://www.json.org/) config files
 
 ```
- yargs  <-- Parse command line arguments
+ yargs  <-- CLI arguments
    |
   fs    <-- JSON config files
 ```

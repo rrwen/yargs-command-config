@@ -1,6 +1,6 @@
 {
   "name": "yargs-command-config",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Yargs command for managing config files",
   "main": "index.js",
   "scripts": {
