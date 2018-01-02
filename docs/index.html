@@ -119,6 +119,10 @@
   <td class='break-word'><span>name of base 
 <code>&#x3C;config></code>
  command.
+<ol>
+<li><strong>Original</strong>: <code>config &#x3C;task> [key] [value] [--file]</code></li>
+<li><strong>options.command='newconfig':</strong> <code>newconfig &#x3C;task> [key] [value] [--file]</code></li>
+</ol>
 </span></td>
 </tr>
 
@@ -157,7 +161,7 @@
     (default <code>{}</code>)
   </td>
   <td class='break-word'><span>options for 
-<task>
+<code>&#x3C;task></code>
  commands.
 </span></td>
 </tr>
@@ -171,6 +175,10 @@
   <td class='break-word'><span>name of 
 <code>&#x3C;task></code>
  command.
+<ol>
+<li><strong>Original</strong>: <code>config &#x3C;task> [key] [value] [--file]</code></li>
+<li><strong>options.task.command='newtask':</strong> <code>config &#x3C;newtask> [key] [value] [--file]</code></li>
+</ol>
 </span></td>
 </tr>
 
@@ -184,6 +192,10 @@
   <td class='break-word'><span>name of optional 
 <code>[key]</code>
  argument.
+<ol>
+<li><strong>Original</strong>: <code>config &#x3C;task> [key] [value] [--file]</code></li>
+<li><strong>options.task.key='newkey':</strong> <code>config &#x3C;task> [newkey] [value] [--file]</code></li>
+</ol>
 </span></td>
 </tr>
 
@@ -197,6 +209,10 @@
   <td class='break-word'><span>name of optional 
 <code>[value]</code>
  argument.
+<ol>
+<li><strong>Original</strong>: <code>config &#x3C;task> [key] [value] [--file]</code></li>
+<li><strong>options.task.value='newvalue':</strong> <code>config &#x3C;task> [key] [newvalue] [--file]</code></li>
+</ol>
 </span></td>
 </tr>
 
@@ -210,6 +226,10 @@
   <td class='break-word'><span>name of optional 
 <code>[--file]</code>
  argument.
+<ol>
+<li><strong>Original</strong>: <code>config &#x3C;task> [key] [value] [--file]</code></li>
+<li><strong>options.task.file='newfile':</strong> <code>config &#x3C;task> [key] [value] [--newfile]</code></li>
+</ol>
 </span></td>
 </tr>
 
@@ -225,6 +245,10 @@
 > command for 
 <code>reset</code>
 .
+<ol>
+<li><strong>Original</strong>: <code>config reset [--file]</code></li>
+<li><strong>options.task.reset='newreset':</strong> <code>config newreset [--file]</code></li>
+</ol>
 </span></td>
 </tr>
 
@@ -240,6 +264,10 @@
 > command for 
 <code>clear</code>
 .
+<ol>
+<li><strong>Original</strong>: <code>config clear [--file]</code></li>
+<li><strong>options.task.reset='newclear':</strong> <code>config newclear [--file]</code></li>
+</ol>
 </span></td>
 </tr>
 
@@ -255,6 +283,10 @@
 > command for 
 <code>view</code>
 .
+<ol>
+<li><strong>Original</strong>: <code>config view [--file]</code></li>
+<li><strong>options.task.view='newview':</strong> <code>config newview [--file]</code></li>
+</ol>
 </span></td>
 </tr>
 
@@ -270,6 +302,10 @@
 > command for 
 <code>delete</code>
 .
+<ol>
+<li><strong>Original</strong>: <code>config delete [--file]</code></li>
+<li><strong>options.task.delete='newdelete':</strong> <code>config newdelete [key] [--file]</code></li>
+</ol>
 </span></td>
 </tr>
 
@@ -285,6 +321,10 @@
 > command for 
 <code>set</code>
 .
+<ol>
+<li><strong>Original</strong>: <code>config set [--file]</code></li>
+<li><strong>options.task.set='newset':</strong> <code>config newset [key] [value] [--file]</code></li>
+</ol>
 </span></td>
 </tr>
 
@@ -349,7 +389,7 @@ options.defaults = {<span class="hljs-attr">field</span>: <span class="hljs-stri
 options.describe = <span class="hljs-string">'Description'</span>;
 
 <span class="hljs-comment">// (options_task) Setup task options</span>
-options.task. = {};
+options.task = {};
 options.task.command = <span class="hljs-string">'task2'</span>;
 options.task.key = <span class="hljs-string">'key2'</span>;
 options.task.value = <span class="hljs-string">'value2'</span>;

@@ -16,21 +16,61 @@ var fs = require('fs');
  * * The command line argument `[file]` will take priority over `options.file` 
  *
  * @param {string} [options.command='config'] name of base `<config>` command.
+ *
+ * 1. **Original**: `config <task> [key] [value] [--file]`
+ * 2. **options.command='newconfig':** `newconfig <task> [key] [value] [--file]`
+ *
  * @param {Object} [options.defaults={}] default config object to be used.
  *
  *  * If `options.defaults` is undefined, the object `argv.config` will be used before defaulting to `{}` 
  *
  * @param {string} [options.describe='describe'] description for base `<config>` command.
- * @param {Object} [options.task={}] options for <task> commands.
+ * @param {Object} [options.task={}] options for `<task>` commands.
  * @param {Object} [options.task.command='task'] name of `<task>` command.
+ *
+ * 1. **Original**: `config <task> [key] [value] [--file]`
+ * 2. **options.task.command='newtask':** `config <newtask> [key] [value] [--file]`
+ *
  * @param {string} [options.task.key='key'] name of optional `[key]` argument.
+ *
+ * 1. **Original**: `config <task> [key] [value] [--file]`
+ * 2. **options.task.key='newkey':** `config <task> [newkey] [value] [--file]`
+ *
  * @param {string} [options.task.value='value'] name of optional `[value]` argument.
+ *
+ * 1. **Original**: `config <task> [key] [value] [--file]`
+ * 2. **options.task.value='newvalue':** `config <task> [key] [newvalue] [--file]`
+ *
  * @param {string} [options.task.file='file'] name of optional `[--file]` argument.
+ *
+ * 1. **Original**: `config <task> [key] [value] [--file]`
+ * 2. **options.task.file='newfile':** `config <task> [key] [value] [--newfile]`
+ *
  * @param {Object} [options.task.reset='reset'] name of `<task`> command for `reset`.
+ *
+ * 1. **Original**: `config reset [--file]`
+ * 2. **options.task.reset='newreset':** `config newreset [--file]`
+ *
  * @param {Object} [options.task.clear='clear'] name of `<task`> command for `clear`.
+ *
+ * 1. **Original**: `config clear [--file]`
+ * 2. **options.task.reset='newclear':** `config newclear [--file]`
+ *
  * @param {Object} [options.task.view='view'] name of `<task`> command for `view`.
+ *
+ * 1. **Original**: `config view [--file]`
+ * 2. **options.task.view='newview':** `config newview [--file]`
+ *
  * @param {Object} [options.task.delete='delete'] name of `<task`> command for `delete`.
+ *
+ * 1. **Original**: `config delete [--file]`
+ * 2. **options.task.delete='newdelete':** `config newdelete [key] [--file]`
+ *
  * @param {Object} [options.task.set='set'] name of `<task`> command for `set`.
+ *
+ * 1. **Original**: `config set [--file]`
+ * 2. **options.task.set='newset':** `config newset [key] [value] [--file]`
+ *
  * @returns {Object} Yargs {@link https://github.com/yargs/yargs/blob/master/docs/advanced.md#providing-a-command-module Command Module} with the following properties (`out` is the returned Object):
  *
  * * `out.command`: the command string in the form of `options.command <options.task.command> [options.task.key] [options.task.value] [--options.task.file]`
@@ -59,7 +99,7 @@ var fs = require('fs');
  * options.describe = 'Description';
  *
  * // (options_task) Setup task options
- * options.task. = {};
+ * options.task = {};
  * options.task.command = 'task2';
  * options.task.key = 'key2';
  * options.task.value = 'value2';
@@ -124,7 +164,7 @@ module.exports = function(options) {
 	out.command = options.command + ' <' + options.task.command + '> [' + options.task.key + '] [' + options.task.value + '] [--' + options.task.file +  ']';
 	out.describe = options.describe;
 	out.handler = function(argv) {
-		var task = argv.task;
+		var task = argv[options.task.command];
 		var file = argv[options.task.file] || options.file;
 		var defaults =  options.defaults || argv.config || {};
 		
@@ -132,19 +172,19 @@ module.exports = function(options) {
 		if (!fs.existsSync(file)) {
 			fs.writeFileSync(file, JSON.stringify(defaults));
 		}
-		var json = require(file);
+		var json = JSON.parse(fs.readFileSync(file));
 		
 		// (json_reset) Reset json file to defaults
 		if (task == options.task.reset) {
-			fs.writeFileSync(file, JSON.stringify(defaults));
 			json = defaults;
+			fs.writeFileSync(file, JSON.stringify(json));
 			console.log('Reset defaults');
 		}
 		
 		// (json_clear) Clear json file
 		if (task == options.task.clear) {
-			fs.writeFileSync(file, '{}');
 			json = {};
+			fs.writeFileSync(file, JSON.stringify(json));
 			console.log('Empty defaults');
 		}
 		
@@ -156,6 +196,7 @@ module.exports = function(options) {
 		// (json_delete) Delete key from json file
 		if (task == options.task.delete) {
 			delete json[argv[options.task.key]];
+			delete argv[argv[options.task.key]];
 			fs.writeFileSync(file, JSON.stringify(json));
 			console.log('Delete default', argv[options.task.key]);
 		}
