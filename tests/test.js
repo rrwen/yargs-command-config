@@ -22,6 +22,9 @@ for (var k in json.devDependencies) {
 if (!fs.existsSync('./tests/log')){
 	fs.mkdirSync('./tests/log');
 }
+if (!fs.existsSync('./tests/out')){
+	fs.mkdirSync('./tests/out');
+}
 var testFile = './tests/log/test_' + json.version.split('.').join('_') + '.txt';
 test.createStream().pipe(fs.createWriteStream(testFile));
 test.createStream().pipe(process.stdout);
