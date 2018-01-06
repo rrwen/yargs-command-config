@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8' />
-  <title>yargs-command-config 1.0.0 | Documentation</title>
+  <title>yargs-command-config 1.0.1 | Documentation</title>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' type='text/css' rel='stylesheet' />
   <link href='assets/style.css' type='text/css' rel='stylesheet' />
@@ -14,7 +14,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>yargs-command-config</h3>
-          <div class='mb1'><code>1.0.0</code></div>
+          <div class='mb1'><code>1.0.1</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -104,7 +104,7 @@
   </td>
   <td class='break-word'><span>default path to JSON config file for yargs.
 <ul>
-<li>The command line argument <code>[file]</code> will take priority over <code>options.file</code></li>
+<li>The command line argument <code>[--config]</code> will take priority over <code>options.file</code></li>
 </ul>
 </span></td>
 </tr>
@@ -120,8 +120,8 @@
 <code>&#x3C;config></code>
  command.
 <ol>
-<li><strong>Original</strong>: <code>config &#x3C;task> [key] [value] [--file]</code></li>
-<li><strong>options.command='newconfig':</strong> <code>newconfig &#x3C;task> [key] [value] [--file]</code></li>
+<li><strong>Original</strong>: <code>config &#x3C;task> [key] [value] [--config]</code></li>
+<li><strong>options.command='newconfig':</strong> <code>newconfig &#x3C;task> [key] [value] [--config]</code></li>
 </ol>
 </span></td>
 </tr>
@@ -176,8 +176,8 @@
 <code>&#x3C;task></code>
  command.
 <ol>
-<li><strong>Original</strong>: <code>config &#x3C;task> [key] [value] [--file]</code></li>
-<li><strong>options.task.command='newtask':</strong> <code>config &#x3C;newtask> [key] [value] [--file]</code></li>
+<li><strong>Original</strong>: <code>config &#x3C;task> [key] [value] [--config]</code></li>
+<li><strong>options.task.command='newtask':</strong> <code>config &#x3C;newtask> [key] [value] [--config]</code></li>
 </ol>
 </span></td>
 </tr>
@@ -193,8 +193,8 @@
 <code>[key]</code>
  argument.
 <ol>
-<li><strong>Original</strong>: <code>config &#x3C;task> [key] [value] [--file]</code></li>
-<li><strong>options.task.key='newkey':</strong> <code>config &#x3C;task> [newkey] [value] [--file]</code></li>
+<li><strong>Original</strong>: <code>config &#x3C;task> [key] [value] [--config]</code></li>
+<li><strong>options.task.key='newkey':</strong> <code>config &#x3C;task> [newkey] [value] [--config]</code></li>
 </ol>
 </span></td>
 </tr>
@@ -210,8 +210,8 @@
 <code>[value]</code>
  argument.
 <ol>
-<li><strong>Original</strong>: <code>config &#x3C;task> [key] [value] [--file]</code></li>
-<li><strong>options.task.value='newvalue':</strong> <code>config &#x3C;task> [key] [newvalue] [--file]</code></li>
+<li><strong>Original</strong>: <code>config &#x3C;task> [key] [value] [--config]</code></li>
+<li><strong>options.task.value='newvalue':</strong> <code>config &#x3C;task> [key] [newvalue] [--config]</code></li>
 </ol>
 </span></td>
 </tr>
@@ -219,16 +219,16 @@
 
   
     <tr>
-  <td class='break-word'><span class='code bold'>options.task.file</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>
+  <td class='break-word'><span class='code bold'>options.task.config</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>
   
-    (default <code>&#39;file&#39;</code>)
+    (default <code>&#39;config&#39;</code>)
   </td>
   <td class='break-word'><span>name of optional 
-<code>[--file]</code>
+<code>[--config]</code>
  argument.
 <ol>
-<li><strong>Original</strong>: <code>config &#x3C;task> [key] [value] [--file]</code></li>
-<li><strong>options.task.file='newfile':</strong> <code>config &#x3C;task> [key] [value] [--newfile]</code></li>
+<li><strong>Original</strong>: <code>config &#x3C;task> [key] [value] [--config]</code></li>
+<li><strong>options.task.config='newconfig':</strong> <code>config &#x3C;task> [key] [value] [--newconfig]</code></li>
 </ol>
 </span></td>
 </tr>
@@ -246,8 +246,8 @@
 <code>reset</code>
 .
 <ol>
-<li><strong>Original</strong>: <code>config reset [--file]</code></li>
-<li><strong>options.task.reset='newreset':</strong> <code>config newreset [--file]</code></li>
+<li><strong>Original</strong>: <code>config reset [--config]</code></li>
+<li><strong>options.task.reset='newreset':</strong> <code>config newreset [--config]</code></li>
 </ol>
 </span></td>
 </tr>
@@ -265,8 +265,8 @@
 <code>clear</code>
 .
 <ol>
-<li><strong>Original</strong>: <code>config clear [--file]</code></li>
-<li><strong>options.task.reset='newclear':</strong> <code>config newclear [--file]</code></li>
+<li><strong>Original</strong>: <code>config clear [--config]</code></li>
+<li><strong>options.task.reset='newclear':</strong> <code>config newclear [--config]</code></li>
 </ol>
 </span></td>
 </tr>
@@ -284,8 +284,8 @@
 <code>view</code>
 .
 <ol>
-<li><strong>Original</strong>: <code>config view [--file]</code></li>
-<li><strong>options.task.view='newview':</strong> <code>config newview [--file]</code></li>
+<li><strong>Original</strong>: <code>config view [--config]</code></li>
+<li><strong>options.task.view='newview':</strong> <code>config newview [--config]</code></li>
 </ol>
 </span></td>
 </tr>
@@ -303,8 +303,8 @@
 <code>delete</code>
 .
 <ol>
-<li><strong>Original</strong>: <code>config delete [--file]</code></li>
-<li><strong>options.task.delete='newdelete':</strong> <code>config newdelete [key] [--file]</code></li>
+<li><strong>Original</strong>: <code>config delete [--config]</code></li>
+<li><strong>options.task.delete='newdelete':</strong> <code>config newdelete [key] [--config]</code></li>
 </ol>
 </span></td>
 </tr>
@@ -322,8 +322,8 @@
 <code>set</code>
 .
 <ol>
-<li><strong>Original</strong>: <code>config set [--file]</code></li>
-<li><strong>options.task.set='newset':</strong> <code>config newset [key] [value] [--file]</code></li>
+<li><strong>Original</strong>: <code>config set [--config]</code></li>
+<li><strong>options.task.set='newset':</strong> <code>config newset [key] [value] [--config]</code></li>
 </ol>
 </span></td>
 </tr>
@@ -353,7 +353,7 @@
 <code>out</code>
  is the returned Object):
 <ul>
-<li><code>out.command</code>: the command string in the form of <code>options.command &#x3C;options.task.command> [options.task.key] [options.task.value] [--options.task.file]</code></li>
+<li><code>out.command</code>: the command string in the form of <code>options.command &#x3C;options.task.command> [options.task.key] [options.task.value] [--options.task.config]</code></li>
 <li><code>out.describe</code>: the description string for <code>out.command</code></li>
 <li><code>out.handler</code>: the function that manages the config file and returns an <code>argv</code> Object containing command line arguments</li>
 </ul>
@@ -393,7 +393,7 @@ options.task = {};
 options.task.command = <span class="hljs-string">'task2'</span>;
 options.task.key = <span class="hljs-string">'key2'</span>;
 options.task.value = <span class="hljs-string">'value2'</span>;
-options.task.file = <span class="hljs-string">'file2'</span>;
+options.task.config = <span class="hljs-string">'config2'</span>;
 options.task.reset = <span class="hljs-string">'reset2'</span>;
 options.task.clear = <span class="hljs-string">'clear2'</span>;
 options.task.view = <span class="hljs-string">'view2'</span>;
