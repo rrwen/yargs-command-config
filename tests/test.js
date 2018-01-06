@@ -47,28 +47,28 @@ test('Tests for ' + json.name + ' (' + json.version + ')', t => {
 	var defaultHandler = config().handler;
 	
 	// (test_default_clear) Test default clear command
-	actual = defaultHandler({_: ['config'], task: 'clear', file: './tests/out/config.json', config: {option: 'value'}});
-	expected = {_: ['config'], task: 'clear', file: './tests/out/config.json', config: {option: 'value'}};
+	actual = defaultHandler({_: ['config'], task: 'clear', config: './tests/out/config.json', key: {option: 'value'}});
+	expected = {_: ['config'], task: 'clear', config: './tests/out/config.json', key: {option: 'value'}};
 	t.deepEquals(actual, expected, '(A) config clear');
 	
 	// (test_default_reset) Test default reset command
-	actual = defaultHandler({_: ['config'], task: 'reset', file: './tests/out/config.json'});
-	expected = {_: ['config'], task: 'reset', file: './tests/out/config.json'};
+	actual = defaultHandler({_: ['config'], task: 'reset', config: './tests/out/config.json'});
+	expected = {_: ['config'], task: 'reset', config: './tests/out/config.json'};
 	t.deepEquals(actual, expected, '(A) config reset');
 	
 	// (test_default_view) Test default view command
-	actual = defaultHandler({_: ['config'], file: './tests/out/config.json', task: 'view'});
-	expected = {_: ['config'], file: './tests/out/config.json', task: 'view'};
+	actual = defaultHandler({_: ['config'], config: './tests/out/config.json', task: 'view'});
+	expected = {_: ['config'], config: './tests/out/config.json', task: 'view'};
 	t.deepEquals(actual, expected, '(A) config view');
 	
 	// (test_default_set) Test default set command
-	actual = defaultHandler({_: ['config'], task: 'set', file: './tests/out/config.json', key: 'field', value: 'value'});
-	expected = {_: ['config'], task: 'set', file: './tests/out/config.json', key: 'field', value: 'value', field: 'value'};
+	actual = defaultHandler({_: ['config'], task: 'set', config: './tests/out/config.json', key: 'field', value: 'value'});
+	expected = {_: ['config'], task: 'set', config: './tests/out/config.json', key: 'field', value: 'value', field: 'value'};
 	t.deepEquals(actual, expected, '(A) config set');
 	
 	// (test_default_delete) Test default delete command
-	actual = defaultHandler({_: ['config'], task: 'delete', file: './tests/out/config.json', key: 'field'});
-	expected = {_: ['config'], task: 'delete', file: './tests/out/config.json', key: 'field'};
+	actual = defaultHandler({_: ['config'], task: 'delete', config: './tests/out/config.json', key: 'field'});
+	expected = {_: ['config'], task: 'delete', config: './tests/out/config.json', key: 'field'};
 	t.deepEquals(actual, expected, '(A) config delete');
 	
 	// (test_custom) Tests on custom options
@@ -82,7 +82,7 @@ test('Tests for ' + json.name + ' (' + json.version + ')', t => {
 			command: 'task2',
 			key: 'key2',
 			value: 'value2',
-			file: 'file2',
+			config: 'config2',
 			reset: 'reset2',
 			clear: 'clear2',
 			view: 'view2',
@@ -103,8 +103,8 @@ test('Tests for ' + json.name + ' (' + json.version + ')', t => {
 	t.deepEquals(actual, expected, '(B) config2 reset2');
 	
 	// (test_custom_view) Test custom view command
-	actual = customHandler({_: ['config2'], file2: './tests/out/config2.json', task2: 'view2'});
-	expected = {_: ['config2'], file2: './tests/out/config2.json', task2: 'view2', field: 'value'};
+	actual = customHandler({_: ['config2'], config2: './tests/out/config2.json', task2: 'view2'});
+	expected = {_: ['config2'], config2: './tests/out/config2.json', task2: 'view2', field: 'value'};
 	t.deepEquals(actual, expected, '(B) config2 view2');
 	
 	// (test_custom_set) Test custom set command

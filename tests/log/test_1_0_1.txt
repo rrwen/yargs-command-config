@@ -1,0 +1,21 @@
+TAP version 13
+# Tests for yargs-command-config (1.0.1)
+# Node.js (v9.2.0)
+# Description: Yargs command for managing config files
+# Date: 2018-01-05 10:53:35
+# Dependencies:
+# Developer: coveralls (^3.0.0), documentation (^5.3.3), istanbul (^0.4.5), moment (^2.19.1), tape (^4.8.0), yargs (^10.1.0)
+# (A) tests on default options
+ok 1 (A) config clear
+ok 2 (A) config reset
+ok 3 (A) config view
+ok 4 (A) config set
+ok 5 (A) config delete
+# (B) tests on custom options
+ok 6 (B) config2 clear2
+ok 7 (B) config2 reset2
+ok 8 (B) config2 view2
+ok 9 (B) config2 set2
+ok 10 (B) config2 delete2
+
+1..10

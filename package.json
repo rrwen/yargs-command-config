@@ -1,6 +1,6 @@
 {
   "name": "yargs-command-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Yargs command for managing config files",
   "main": "index.js",
   "scripts": {
@@ -29,11 +29,9 @@
     "istanbul": "^0.4.5",
     "moment": "^2.19.1",
     "tape": "^4.8.0",
-    "yargs": "^10.0.3"
+    "yargs": "^10.1.0"
   },
-  "dependencies": {
-    "yargs": "^10.0.3"
-  },
+  "dependencies": {},
   "keywords": [
     "yargs",
     "argument",

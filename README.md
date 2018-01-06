@@ -4,6 +4,7 @@ Richard Wen
 rrwen.dev@gmail.com  
 
 * [Documentation](https://rrwen.github.io/yargs-command-config)
+* [Changes](#changes)
 
 Yargs command for managing config files
 
@@ -12,7 +13,9 @@ Yargs command for managing config files
 [![Coverage Status](https://coveralls.io/repos/github/rrwen/yargs-command-config/badge.svg?branch=master)](https://coveralls.io/github/rrwen/yargs-command-config?branch=master)
 [![npm](https://img.shields.io/npm/dt/yargs-command-config.svg)](https://www.npmjs.com/package/yargs-command-config)
 [![GitHub license](https://img.shields.io/github/license/rrwen/yargs-command-config.svg)](https://github.com/rrwen/yargs-command-config/blob/master/LICENSE)
-[![Twitter](https://img.shields.io/twitter/url/https/github.com/rrwen/yargs-command-config.svg?style=social)](https://twitter.com/intent/tweet?text=Yargs%20command%20for%20managing%20config%20files:%20https%3A%2F%2Fgithub.com%2Frrwen%2Fyargs-command-config%20%23nodejs%20%23npm)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/rrwen/yargs-command-config.svg?style=social)](https://twitter.com/intent/tweet?text=Yargs%20command%20for%20managing%20config%20files:%20https%3A%2F%2Fgithub.com%2Frrwen%2Fyargs-command-config%20%23nodejs%20%23npm)  
+  
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=rrwen%2edev%40gmail%2ecom&lc=CA&item_name=Richard%20Wen%20%28Open%20Source%20Developer%29&item_number=rrwen%2edev%2edonations&no_note=0&currency_code=CAD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHostedGuest)
 
 ## Install
 
@@ -49,7 +52,7 @@ node bin.js config help
 The following will be displayed:
 
 ```
-bin config <task> [key] [value] [--file]
+bin config <task> [key] [value] [--config]
 
 manage default config
 
@@ -77,11 +80,11 @@ Reset default options
 > reset
 
 Manage other config file
-> set [key] [value] --file other.json
-> delete [key] --file other.json
-> view --file other.json
-> clear --file other.json
-> reset --file other.json
+> set [key] [value] --config other.json
+> delete [key] --config other.json
+> view --config other.json
+> clear --config other.json
+> reset --config other.json
 
 Options:
 	--help	Show help	[boolean]
@@ -97,14 +100,14 @@ node bin.js config set key value
 node bin.js config delete key
 ```
 
-Other config files are managed by passing a path in the option `--file`:
+Other config files are managed by passing a path in the option `--config`:
 
 ```
-node bin.js config view --file config.json
-node bin.js config clear --file config.json
-node bin.js config reset --file config.json
-node bin.js config set key value --file config.json
-node bin.js config delete key --file config.json
+node bin.js config view --config config.json
+node bin.js config clear --config config.json
+node bin.js config reset --config config.json
+node bin.js config set key value --config config.json
+node bin.js config delete key --config config.json
 ```
 
 See [Documentation](https://rrwen.github.io/yargs-command-config) for more details.
@@ -243,3 +246,13 @@ npm | Purpose
    |
   fs    <-- JSON config files
 ```
+
+### Changes
+
+#### v1.0.1
+
+* Defaults for `options.task.file` and `[--file]` are now `options.task.config` and `[--config]` respectively
+
+#### v1.0.0
+
+* Initial release

@@ -13,12 +13,12 @@ var fs = require('fs');
  * @param {Object} [options={}] options for this function.
  * @param {string} options.file default path to JSON config file for yargs.
  *
- * * The command line argument `[file]` will take priority over `options.file` 
+ * * The command line argument `[--config]` will take priority over `options.file` 
  *
  * @param {string} [options.command='config'] name of base `<config>` command.
  *
- * 1. **Original**: `config <task> [key] [value] [--file]`
- * 2. **options.command='newconfig':** `newconfig <task> [key] [value] [--file]`
+ * 1. **Original**: `config <task> [key] [value] [--config]`
+ * 2. **options.command='newconfig':** `newconfig <task> [key] [value] [--config]`
  *
  * @param {Object} [options.defaults={}] default config object to be used.
  *
@@ -28,52 +28,52 @@ var fs = require('fs');
  * @param {Object} [options.task={}] options for `<task>` commands.
  * @param {Object} [options.task.command='task'] name of `<task>` command.
  *
- * 1. **Original**: `config <task> [key] [value] [--file]`
- * 2. **options.task.command='newtask':** `config <newtask> [key] [value] [--file]`
+ * 1. **Original**: `config <task> [key] [value] [--config]`
+ * 2. **options.task.command='newtask':** `config <newtask> [key] [value] [--config]`
  *
  * @param {string} [options.task.key='key'] name of optional `[key]` argument.
  *
- * 1. **Original**: `config <task> [key] [value] [--file]`
- * 2. **options.task.key='newkey':** `config <task> [newkey] [value] [--file]`
+ * 1. **Original**: `config <task> [key] [value] [--config]`
+ * 2. **options.task.key='newkey':** `config <task> [newkey] [value] [--config]`
  *
  * @param {string} [options.task.value='value'] name of optional `[value]` argument.
  *
- * 1. **Original**: `config <task> [key] [value] [--file]`
- * 2. **options.task.value='newvalue':** `config <task> [key] [newvalue] [--file]`
+ * 1. **Original**: `config <task> [key] [value] [--config]`
+ * 2. **options.task.value='newvalue':** `config <task> [key] [newvalue] [--config]`
  *
- * @param {string} [options.task.file='file'] name of optional `[--file]` argument.
+ * @param {string} [options.task.config='config'] name of optional `[--config]` argument.
  *
- * 1. **Original**: `config <task> [key] [value] [--file]`
- * 2. **options.task.file='newfile':** `config <task> [key] [value] [--newfile]`
+ * 1. **Original**: `config <task> [key] [value] [--config]`
+ * 2. **options.task.config='newconfig':** `config <task> [key] [value] [--newconfig]`
  *
  * @param {Object} [options.task.reset='reset'] name of `<task`> command for `reset`.
  *
- * 1. **Original**: `config reset [--file]`
- * 2. **options.task.reset='newreset':** `config newreset [--file]`
+ * 1. **Original**: `config reset [--config]`
+ * 2. **options.task.reset='newreset':** `config newreset [--config]`
  *
  * @param {Object} [options.task.clear='clear'] name of `<task`> command for `clear`.
  *
- * 1. **Original**: `config clear [--file]`
- * 2. **options.task.reset='newclear':** `config newclear [--file]`
+ * 1. **Original**: `config clear [--config]`
+ * 2. **options.task.reset='newclear':** `config newclear [--config]`
  *
  * @param {Object} [options.task.view='view'] name of `<task`> command for `view`.
  *
- * 1. **Original**: `config view [--file]`
- * 2. **options.task.view='newview':** `config newview [--file]`
+ * 1. **Original**: `config view [--config]`
+ * 2. **options.task.view='newview':** `config newview [--config]`
  *
  * @param {Object} [options.task.delete='delete'] name of `<task`> command for `delete`.
  *
- * 1. **Original**: `config delete [--file]`
- * 2. **options.task.delete='newdelete':** `config newdelete [key] [--file]`
+ * 1. **Original**: `config delete [--config]`
+ * 2. **options.task.delete='newdelete':** `config newdelete [key] [--config]`
  *
  * @param {Object} [options.task.set='set'] name of `<task`> command for `set`.
  *
- * 1. **Original**: `config set [--file]`
- * 2. **options.task.set='newset':** `config newset [key] [value] [--file]`
+ * 1. **Original**: `config set [--config]`
+ * 2. **options.task.set='newset':** `config newset [key] [value] [--config]`
  *
  * @returns {Object} Yargs {@link https://github.com/yargs/yargs/blob/master/docs/advanced.md#providing-a-command-module Command Module} with the following properties (`out` is the returned Object):
  *
- * * `out.command`: the command string in the form of `options.command <options.task.command> [options.task.key] [options.task.value] [--options.task.file]`
+ * * `out.command`: the command string in the form of `options.command <options.task.command> [options.task.key] [options.task.value] [--options.task.config]`
  * * `out.describe`: the description string for `out.command`
  * * `out.handler`: the function that manages the config file and returns an `argv` Object containing command line arguments
  *
@@ -103,7 +103,7 @@ var fs = require('fs');
  * options.task.command = 'task2';
  * options.task.key = 'key2';
  * options.task.value = 'value2';
- * options.task.file = 'file2';
+ * options.task.config = 'config2';
  * options.task.reset = 'reset2';
  * options.task.clear = 'clear2';
  * options.task.view = 'view2';
@@ -125,7 +125,7 @@ module.exports = function(options) {
 	options.task.command = options.task.command || 'task' ;
 	options.task.key = options.task.key || 'key';
 	options.task.value = options.task.value || 'value';
-	options.task.file = options.task.file || 'file';
+	options.task.config = options.task.config || 'config';
 	options.task.reset = options.task.reset || 'reset';
 	options.task.clear = options.task.clear || 'clear';
 	options.task.view = options.task.view || 'view';
@@ -153,20 +153,20 @@ module.exports = function(options) {
 		'\n\nReset default options' +
 		'\n> ' + options.task.reset +
 		'\n\nManage other config file' +
-		'\n> ' +  options.task.set + ' [' + options.task.key + '] [' + options.task.value + ']' + ' --' + options.task.file + ' other.json' +
-		'\n> ' + options.task.delete + ' [' + options.task.key + ']' +  ' --' + options.task.file + ' other.json' +
-		'\n> ' + options.task.view + ' --' + options.task.file + ' other.json' +
-		'\n> ' + options.task.clear + ' --' + options.task.file + ' other.json' +
-		'\n> ' + options.task.reset + ' --' + options.task.file + ' other.json';
+		'\n> ' +  options.task.set + ' [' + options.task.key + '] [' + options.task.value + ']' + ' --' + options.task.config + ' other.json' +
+		'\n> ' + options.task.delete + ' [' + options.task.key + ']' +  ' --' + options.task.config + ' other.json' +
+		'\n> ' + options.task.view + ' --' + options.task.config + ' other.json' +
+		'\n> ' + options.task.clear + ' --' + options.task.config + ' other.json' +
+		'\n> ' + options.task.reset + ' --' + options.task.config + ' other.json';
 		
 	// (command_module) Create yargs command module
 	var out = {};
-	out.command = options.command + ' <' + options.task.command + '> [' + options.task.key + '] [' + options.task.value + '] [--' + options.task.file +  ']';
+	out.command = options.command + ' <' + options.task.command + '> [' + options.task.key + '] [' + options.task.value + '] [--' + options.task.config +  ']';
 	out.describe = options.describe;
 	out.handler = function(argv) {
 		var task = argv[options.task.command];
-		var file = argv[options.task.file] || options.file;
-		var defaults =  options.defaults || argv.config || {};
+		var file = argv[options.task.config] || options.file;
+		var defaults =  options.defaults || {};
 		
 		// (json_read) Read json file or create if not exists
 		if (!fs.existsSync(file)) {
