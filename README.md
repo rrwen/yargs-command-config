@@ -14,7 +14,7 @@ Yargs command for managing config files
 [![npm](https://img.shields.io/npm/dt/yargs-command-config.svg)](https://www.npmjs.com/package/yargs-command-config)
 [![GitHub license](https://img.shields.io/github/license/rrwen/yargs-command-config.svg)](https://github.com/rrwen/yargs-command-config/blob/master/LICENSE)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/rrwen/yargs-command-config.svg?style=social)](https://twitter.com/intent/tweet?text=Yargs%20command%20for%20managing%20config%20files:%20https%3A%2F%2Fgithub.com%2Frrwen%2Fyargs-command-config%20%23nodejs%20%23npm)
-[![Donate](https://img.shields.io/badge/Donate--green.svg)](https://donorbox.org/rrwen)
+[![Donate](https://img.shields.io/badge/-Donate-green.svg)](https://donorbox.org/rrwen)
 
 ## Install
 
