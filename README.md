@@ -13,7 +13,7 @@ Yargs command for managing config files
 [![Coverage Status](https://coveralls.io/repos/github/rrwen/yargs-command-config/badge.svg?branch=master)](https://coveralls.io/github/rrwen/yargs-command-config?branch=master)
 [![npm](https://img.shields.io/npm/dt/yargs-command-config.svg)](https://www.npmjs.com/package/yargs-command-config)
 [![GitHub license](https://img.shields.io/github/license/rrwen/yargs-command-config.svg)](https://github.com/rrwen/yargs-command-config/blob/master/LICENSE)
-[![Donate](https://img.shields.io/badge/Donarbox-donate-yellow.svg)](https://donorbox.org/rrwen)
+[![Donate](https://img.shields.io/badge/donarbox-Donate-yellow.svg)](https://donorbox.org/rrwen)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/rrwen/yargs-command-config.svg?style=social)](https://twitter.com/intent/tweet?text=Yargs%20command%20for%20managing%20config%20files:%20https%3A%2F%2Fgithub.com%2Frrwen%2Fyargs-command-config%20%23nodejs%20%23npm)
 
 ## Install
